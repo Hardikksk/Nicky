@@ -1,234 +1,355 @@
-// Loading Screen
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-window.addEventListener("load",()=>{
-
-    setTimeout(()=>{
-
-        document.getElementById("loader").style.display="none";
-
-    },3000);
-
-});
-
-
-
-
-// Love Letter Text
-
-const message = 
-"Dear Monika ❤️,\n\n" +
-"Happy Birthday my love. On this special day, I just want to say that you are one of the most beautiful parts of my life. ✨\n\n" +
-"Your smile makes my world brighter and your happiness means everything to me. I promise to always support you, respect you and stand beside you. ❤️\n\n" +
-"May this birthday bring you endless happiness, success and all the love you deserve.\n\n" +
-"Forever yours,\nHardik ❤️";
+body{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:#050505;
+    color:white;
+}
 
 
+/* Loading Screen */
 
-let index = 0;
+#loading{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#loading h1{
+    color:#ffd700;
+    font-size:30px;
+    text-align:center;
+}
 
 
-function typeWriter(){
+.loader{
+    margin-top:25px;
+    width:50px;
+    height:50px;
+    border:5px solid #333;
+    border-top:5px solid red;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
 
-    if(index < message.length){
 
-        document.getElementById("typing").innerHTML += 
-        message.charAt(index)
-        .replace("\n","<br>");
+@keyframes spin{
 
-        index++;
-
-        setTimeout(typeWriter,50);
-
-    }
+100%{
+transform:rotate(360deg);
+}
 
 }
 
 
 
-window.onload=function(){
+/* Background Stars */
 
-    setTimeout(typeWriter,3500);
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+    radial-gradient(white 1px,transparent 1px);
+    background-size:50px 50px;
+    opacity:.3;
+    animation:moveStars 20s linear infinite;
+}
 
-};
 
+@keyframes moveStars{
 
+from{
+background-position:0 0;
+}
 
-
-
-// Start Surprise Button
-
-function startLove(){
-
-    let music=document.getElementById("music");
-
-    music.play();
-
-    document.querySelector(".letter")
-    .scrollIntoView({
-
-        behavior:"smooth"
-
-    });
+to{
+background-position:500px 500px;
+}
 
 }
 
 
 
+/* Floating Hearts */
 
-// Gift Opening
+.hearts:before{
 
-function openGift(){
+content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+position:absolute;
+width:100%;
+font-size:35px;
+animation:float 12s linear infinite;
+opacity:.5;
 
-    let gift=document.querySelector(".gift-box");
-
-    let text=document.getElementById("giftText");
-
-
-    gift.innerHTML="💝";
-
-
-    text.innerHTML=
-    "My biggest gift is your smile ❤️<br>" +
-    "I love you forever Monika ❤️";
+}
 
 
-    gift.style.animation="pulse 1s infinite";
+@keyframes float{
 
+0%{
+transform:translateY(100vh);
+}
+
+100%{
+transform:translateY(-120vh);
+}
 
 }
 
 
 
+/* Pages */
 
+.page{
 
-// Extra Heart Creation
+position:absolute;
+width:100%;
+height:100vh;
 
-function createHeart(){
+display:flex;
+justify-content:center;
+align-items:center;
 
-    const heart=document.createElement("div");
+opacity:0;
+visibility:hidden;
 
-    heart.innerHTML="❤️";
+transform:scale(.8);
 
-    heart.className="extra-heart";
-
-
-    heart.style.left=
-    Math.random()*100+"vw";
-
-
-    heart.style.animationDuration=
-    (Math.random()*5+5)+"s";
-
-
-    document.body.appendChild(heart);
-
-
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },10000);
-
+transition:1s ease;
 
 }
 
 
-setInterval(createHeart,800);
-// Love Counter
+.page.active{
 
-let loveDate = new Date("2025-07-22");
-
-function updateCounter(){
-
-let now = new Date();
-
-let difference = now - loveDate;
-
-
-let days=Math.floor(
-difference/(1000*60*60*24)
-);
-
-
-let hours=Math.floor(
-(difference/(1000*60*60))%24
-);
-
-
-let minutes=Math.floor(
-(difference/(1000*60))%60
-);
-
-
-let seconds=Math.floor(
-(difference/1000)%60
-);
-
-
-
-document.getElementById("days").innerHTML=days;
-
-document.getElementById("hours").innerHTML=hours;
-
-document.getElementById("minutes").innerHTML=minutes;
-
-document.getElementById("seconds").innerHTML=seconds;
-
+opacity:1;
+visibility:visible;
+transform:scale(1);
 
 }
 
 
-setInterval(updateCounter,1000);
 
-updateCounter();
-
+/* Glass Card */
 
 
+.card{
 
-// Fireworks Effect
+width:90%;
+max-width:650px;
 
-function fireworks(){
+padding:35px;
 
+background:
+rgba(255,255,255,0.08);
 
-for(let i=0;i<80;i++){
+border:1px solid rgba(255,215,0,.4);
 
+border-radius:25px;
 
-let spark=document.createElement("div");
+backdrop-filter:blur(15px);
 
-spark.className="spark";
+box-shadow:
+0 0 40px rgba(255,0,0,.4);
 
+text-align:center;
 
-spark.style.left="50%";
-
-spark.style.top="50%";
-
-
-spark.style.setProperty(
-"--x",
-Math.random()*600-300
-);
-
-
-spark.style.setProperty(
-"--y",
-Math.random()*600-300
-);
-
-
-
-document.body.appendChild(spark);
-
-
-
-setTimeout(()=>{
-
-spark.remove();
-
-},1000);
-
+animation:appear 1.5s ease;
 
 }
 
+
+@keyframes appear{
+
+from{
+opacity:0;
+transform:translateY(50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+
+/* Heading */
+
+
+h1{
+
+font-size:42px;
+
+color:#ffd700;
+
+text-shadow:
+0 0 10px red;
+
+margin-bottom:20px;
+
+}
+
+
+p{
+
+font-size:18px;
+
+line-height:1.7;
+
+color:#fff;
+
+}
+
+
+
+/* Birthday Message Scroll inside card */
+
+.message{
+
+max-height:330px;
+
+overflow-y:auto;
+
+padding:15px;
+
+}
+
+
+/* Button */
+
+
+button{
+
+margin-top:30px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:
+linear-gradient(45deg,#ff0000,#ffd700);
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+box-shadow:
+0 0 20px red;
+
+transition:.4s;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+box-shadow:
+0 0 40px gold;
+
+}
+
+
+
+/* Gift Animation */
+
+
+.gift{
+
+font-size:90px;
+
+animation:bounce 2s infinite;
+
+}
+
+
+@keyframes bounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-25px);
+}
+
+}
+
+
+
+/* Final Heart */
+
+
+.heart{
+
+font-size:100px;
+
+animation:pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.3);
+
+}
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+h1{
+font-size:30px;
+}
+
+.card{
+
+padding:25px;
+
+}
+
+p{
+
+font-size:15px;
+
+}
+
+button{
+
+font-size:16px;
+
+}
 
 }
