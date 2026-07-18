@@ -8,57 +8,37 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
 <!-- Loading Screen -->
-<div id="loader">
-    <div class="loader-heart">❤️</div>
-    <h2>Creating Magic For Monika...</h2>
+<div id="loading">
+    <h1>Preparing Your Surprise ❤️</h1>
+    <div class="loader"></div>
 </div>
 
 
-<!-- Background Stars -->
+<!-- Background Effects -->
 <div class="stars"></div>
+<div class="hearts"></div>
 
 
-<!-- Floating Hearts -->
-<div class="hearts">
-    <span>❤️</span>
-    <span>💖</span>
-    <span>❤️</span>
-    <span>💕</span>
-    <span>❤️</span>
-</div>
+<!-- Page 1 -->
+<section class="page active" id="page1">
 
+    <div class="card">
 
-
-<!-- Hero Section -->
-
-<section class="hero">
-
-    <div class="glass">
-
-        <h1>
-            Happy Birthday
-            <span>Monika ❤️</span>
-        </h1>
-
-        <h2>22 July</h2>
+        <h1>Happy Birthday<br>Monika ❤️</h1>
 
         <p>
-            A special surprise made with love by
+            A special surprise made with love
+            from Hardik ❤️
         </p>
 
-        <h3>
-            Hardik ❤️
-        </h3>
-
-
-        <button onclick="startLove()">
+        <button onclick="nextPage(2)">
             Open Your Surprise 🎁
         </button>
 
@@ -68,122 +48,118 @@
 
 
 
-<!-- Love Letter Section -->
+<!-- Page 2 -->
+<section class="page" id="page2">
 
-<section class="letter">
+<div class="card">
 
-<div class="glass">
+<h1>Happy Birthday<br>My Love ❤️</h1>
 
-<h2>My Love Letter 💌</h2>
+<p class="message">
 
-<p id="typing"></p>
+Happy Birthday my love, my princess 👑❤️
 
-</div>
+Dear Nicky, my cute little Dora, my beautiful Cutiepie ❤️ today is the most special day because it is the day you came into this world and made it more beautiful.
 
-</section>
+I just want you to know how precious you are to me. Your smile, your kindness, your care, and the little things you do make my life happier.
 
+You are not just a person in my life, you are my happiness, my peace, and my biggest blessing.
 
+My Princess, I hope your birthday brings you endless happiness, success, love, and everything your heart wishes for.
 
-<!-- Gift Section -->
+May every dream of yours come true and may you always keep smiling like the cutest Nicky I know.
 
-<section class="gift">
+Dora, thank you for being such a wonderful part of my life.
 
-<div class="glass">
+Happy Birthday again, my love ❤️
 
-<h2>Your Gift 🎁</h2>
-
-
-<div class="gift-box" onclick="openGift()">
-
-🎁
-
-</div>
-
-
-<p id="giftText">
-Click the gift box ❤️
 </p>
 
 
-</div>
-
-</section>
-
-
-<!-- Love Counter -->
-
-<section class="counter">
-
-<div class="glass">
-
-<h2>Our Beautiful Journey ❤️</h2>
-
-<div id="counter">
-
-<div>
-<h1 id="days">0</h1>
-<p>Days</p>
-</div>
-
-<div>
-<h1 id="hours">0</h1>
-<p>Hours</p>
-</div>
-
-<div>
-<h1 id="minutes">0</h1>
-<p>Minutes</p>
-</div>
-
-<div>
-<h1 id="seconds">0</h1>
-<p>Seconds</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- Fireworks Button -->
-
-<section class="firework">
-
-<div class="glass">
-
-<h2>One More Surprise 🎆</h2>
-
-<button onclick="fireworks()">
-Click Me ❤️
+<button onclick="nextPage(3)">
+Continue ❤️
 </button>
 
-<div id="fireArea"></div>
 
 </div>
 
 </section>
 
-<!-- Ending -->
 
-<section class="ending">
 
-<div class="glass">
+<!-- Page 3 -->
+<section class="page" id="page3">
+
+<div class="card gift-card">
+
+<div class="gift">
+🎁
+</div>
 
 <h1>
-Forever With You ❤️
+My Biggest Gift For You ❤️
 </h1>
 
 <p>
-No matter what happens,
-I will always choose you.
+
+My Princess 👑
+
+The biggest gift I can give you is not something expensive...
+
+It is my love, my care, my respect and my promise to always support you.
+
+You are one of the most beautiful gifts life has given me ❤️
+
 </p>
 
-<h2>
-- Hardik ❤️
-</h2>
+
+<button onclick="nextPage(4)">
+Open Final Message 💌
+</button>
+
+
+</div>
+
+</section>
+
+
+
+
+<!-- Page 4 -->
+<section class="page" id="page4">
+
+<div class="card">
+
+<h1>
+Final Message ❤️
+</h1>
+
+
+<p>
+
+Nicky ❤️
+
+This surprise is just a small way to show how special you are to me.
+
+Thank you for being my princess, my happiness and my favourite person.
+
+Your smile makes my days brighter and your presence makes life more beautiful.
+
+I hope this birthday brings unlimited happiness, success and love into your life.
+
+Always keep smiling, my Cutiepie ❤️
+
+Happy Birthday My Love ❤️
+
+Forever special,
+Hardik ❤️
+
+</p>
+
+
+<div class="heart">
+❤️
+</div>
 
 
 </div>
