@@ -1,27 +1,41 @@
-
 // Loading Screen
 
-window.onload = function(){
+window.addEventListener("load", function(){
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
-        document.getElementById("loading").style.display="none";
+        let loading = document.getElementById("loading");
 
-    },2000);
+        if(loading){
+            loading.style.display = "none";
+        }
 
-};
+    },1500);
+
+
+    // First page show
+    showPage(1);
+
+});
 
 
 
-// Page Navigation
+// Page Change Function
 
 function nextPage(pageNumber){
 
-    // Hide all pages
+    showPage(pageNumber);
+
+}
+
+
+
+function showPage(pageNumber){
 
     let pages = document.querySelectorAll(".page");
 
-    pages.forEach(page=>{
+
+    pages.forEach(function(page){
 
         page.classList.remove("active");
 
@@ -29,58 +43,69 @@ function nextPage(pageNumber){
 
 
 
-    // Show selected page
+    let next = document.getElementById("page" + pageNumber);
 
-    document
-    .getElementById("page"+pageNumber)
-    .classList.add("active");
+
+    if(next){
+
+        next.classList.add("active");
+
+    }
 
 }
 
 
 
-// Create Floating Hearts
+// Floating Hearts
 
 function createHeart(){
 
-    const heart=document.createElement("div");
+    let heart = document.createElement("div");
 
-    heart.innerHTML="❤️";
+    heart.innerHTML = "❤️";
 
-    heart.style.position="fixed";
 
-    heart.style.left=Math.random()*100+"%";
+    heart.style.position = "fixed";
 
-    heart.style.bottom="-50px";
+    heart.style.left = Math.random()*100 + "vw";
 
-    heart.style.fontSize=
-    Math.random()*25+15+"px";
+    heart.style.bottom = "-40px";
 
-    heart.style.animation=
-    "heartMove 6s linear";
+    heart.style.fontSize = 
+    (Math.random()*25 + 15) + "px";
+
+    heart.style.zIndex = "999";
+
+
+    heart.style.animation =
+    "heartMove 5s linear forwards";
+
 
     document.body.appendChild(heart);
 
 
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         heart.remove();
 
-    },6000);
+    },5000);
 
 }
 
 
-setInterval(createHeart,800);
+
+setInterval(createHeart,900);
 
 
 
-// Add Heart Animation CSS Dynamically
+// Heart Animation
 
-let style=document.createElement("style");
+let heartStyle = document.createElement("style");
 
-style.innerHTML=`
+
+heartStyle.innerHTML = `
+
 
 @keyframes heartMove{
 
@@ -95,40 +120,17 @@ opacity:1;
 
 100%{
 
-transform:translateY(-110vh);
+transform:translateY(-120vh);
 
 opacity:0;
 
 }
 
 }
-.floating-heart{
 
-position:fixed;
-
-bottom:-50px;
-
-animation:heartUp 5s linear forwards;
-
-z-index:10;
-
-}
-
-
-@keyframes heartUp{
-
-0%{
-transform:translateY(0);
-opacity:1;
-}
-
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
-
-}
 
 `;
 
-document.head.appendChild(style);
+
+
+document.head.appendChild(heartStyle);
